@@ -20,6 +20,7 @@
 						<input type="text" name="userid" placeholder="半角英数字24文字以内">
 						<input type="button"  value="ID確認">
 						
+						<!--  
 						<p>パスワード</p>
 						<input type="password" name="pass" placeholder="半角英数字8文字以上">
 						
@@ -35,6 +36,7 @@
 						
 						<p>生年月日</p>
 						<input type="date" name="birthday">
+						
 						
 						<p>都道府県</p>
 						<select name="plefectures">
@@ -99,7 +101,7 @@
 				
 						<p>答え</p>
 						<input type="text" name="answer">
-						<br>
+						<br>-->
 						<input type="submit" value="確認">
 					</form>
 				</div>

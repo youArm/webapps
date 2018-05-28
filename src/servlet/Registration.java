@@ -37,15 +37,15 @@ public class Registration extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String userid = request.getParameter("userid");
-		String pass = request.getParameter("pass");
-		String nickname = request.getParameter("nicknema");
+		/*String pass = request.getParameter("pass");
+		String nickname = request.getParameter("nickname");
 		String gender = request.getParameter("gender");
-		int birthday = Integer.parseInt(request.getParameter("birthday"));
+		//int birthday = Integer.parseInt(request.getParameter("birthday"));
 		String plefectures = request.getParameter("plefectures");
 		String question = request.getParameter("question");
-		String answer = request.getParameter("answer");
+		String answer = request.getParameter("answer");*/
 		
-		
+		request.getRequestDispatcher("Registration_Confirmation.jsp").forward(request, response);
 		
 	}
 
