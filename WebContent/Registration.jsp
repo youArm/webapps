@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%	
+	String sysYear = (new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()));
+	int isysYear = Integer.parseInt(sysYear);
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,28 +20,45 @@
 				<div class="col-md-12">
 					<h1>基本情報登録</h1>
 					
-					<form action="Registration" method="post">
+					<form action="Registration" method="post" name="regist">
 						<p>ユーザーID</p>
 						<input type="text" name="userid" placeholder="半角英数字24文字以内">
 						<input type="button"  value="ID確認">
 						
-						<!--  
 						<p>パスワード</p>
 						<input type="password" name="pass" placeholder="半角英数字8文字以上">
 						
 						<p>パスワード確認</p>
-						<input type="password" name="password">
+						<input type="password" name="pass2">
 						
 						<p>ニックネーム</p>
 						<input type="text" name="nickname">
 						
 						<p>性別</p>
-						<input type="radio" name="gender">男 &nbsp&nbsp
-						<input type="radio" name="gender">女
+						<input type="radio" name="gender" value="男">男 &nbsp&nbsp
+						<input type="radio" name="gender" value="女">女
 						
 						<p>生年月日</p>
-						<input type="date" name="birthday">
+						<select name="birthyear" required>
+							<option value="">-</option>
+							<% for(int year=1900;year<=isysYear;year++){ %>
+								<option value=<%=year%>><%=year%></option>
+							<%} %>
+						</select> 年 
 						
+						<select name="birthmonth" required>
+							<option value="">-</option>
+							<% for(int month=1;month<=12;month++){ %>
+								<option value=<%=month%>><%=month%></option>
+							<%} %>
+						</select> 月
+						
+						<select name="birthday" required>
+							<option value="">-</option>
+							<% for(int day=1;day<=31;day++){ %>
+								<option value=<%=day%>><%=day %></option>
+							<%} %>
+						</select> 日
 						
 						<p>都道府県</p>
 						<select name="plefectures">
@@ -96,13 +118,13 @@
 							<option value="2">好きな食べ物は？</option>
 							<option value="3">尊敬する人は？</option>
 							<option value="4">子供の頃のニックネームは？</option>
-							<option value="5">好きな本の題名は？</option>
+							<option value="5">好きな本のタイトルは？</option>
 						</select>
 				
 						<p>答え</p>
 						<input type="text" name="answer">
-						<br>-->
-						<input type="submit" value="確認">
+						<br>
+						<input type="submit" value="確認" onclick="errorcheck()">
 					</form>
 				</div>
 			</div>
