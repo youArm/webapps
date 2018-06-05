@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.PassWordDao;
 import dao.UserDao;
-import model.HashPassword;
 import model.PassWordBean;
 import model.UserBean;
 
@@ -55,31 +53,46 @@ public class Registration extends HttpServlet {
 		String questionId = request.getParameter("question");
 		String answer = request.getParameter("answer");
 		
-		UserBean userbean = new UserBean();
-		userbean.setUserId(userid);
-		userbean.setNickname(nickname);
-		userbean.setGender(gender);
-		userbean.setBirthYear(birthyear);
-		userbean.setBirthYear(birthmonth);
-		userbean.setBirthYear(birthday);
-		userbean.setPrefectures(plefectures);
-		userbean.setQuestionId(questionId);
-		userbean.setAnswer(answer);
+		boolean useridflg = true;
+		String path = "";
 		
 		UserDao userdao = new UserDao();
-		userdao.registrationUser(userbean);
+		useridflg = userdao.userIDcheck(userid);
 		
-		HashPassword hashPass = new HashPassword();
-		String encryptPass = hashPass.encryptPass(pass);
+		if(useridflg == false){
+			request.setAttribute("msgflg","1");
+			path = "Registration.jsp";
+			
+		}else if(useridflg = true){
+			UserBean userBean = new UserBean();
+			userBean.setUserId(userid);
+			userBean.setNickname(nickname);
+			userBean.setGender(gender);
+			userBean.setBirthYear(birthyear);
+			userBean.setBirthYear(birthmonth);
+			userBean.setBirthYear(birthday);
+			userBean.setPrefectures(plefectures);
+			userBean.setQuestionId(questionId);
+			userBean.setAnswer(answer);
+			
+			PassWordBean passBean = new PassWordBean();
+			passBean.setUserid(userid);
+			passBean.setPass(pass);
+			
+			request.setAttribute("userbean",userBean);
+			request.setAttribute("passbean",passBean);
+			
+			path = "Registration_Confirmation.jsp";
+
+		}
 		
-		PassWordBean passBean = new PassWordBean();
-		passBean.setUserid(userid);
-		passBean.setPass(encryptPass);
+		//HashPassword hashPass = new HashPassword();
+		//String encryptPass = hashPass.encryptPass(pass);
 		
-		PassWordDao passDao = new PassWordDao();
-		passDao.registrationPassword(passBean);
+		//PassWordDao passDao = new PassWordDao();
+		//passDao.registrationPassword(passBean);
 		
-		request.getRequestDispatcher("Registration_Confirmation.jsp").forward(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

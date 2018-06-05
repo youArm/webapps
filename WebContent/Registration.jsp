@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
     
 <%	
 	String sysYear = (new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()));
 	int isysYear = Integer.parseInt(sysYear);
+%>
+
+<%
+	String msgflg = (String) request.getAttribute("msgflg");
+	String msg = "";
+	
+	//request変数に値が入っていたらエラーメッセージを格納
+	if (msgflg != null) {
+		msg = "ユーザIDが重複しています。";
+
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -11,7 +23,6 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     	<title>会員登録</title>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    	<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	
 	<body>
@@ -23,13 +34,13 @@
 					<form action="Registration" method="post" name="regist">
 						<p>ユーザーID</p>
 						<input type="text" name="userid" placeholder="半角英数字24文字以内">
-						<input type="button"  value="ID確認">
+						<%=msg %>
 						
 						<p>パスワード</p>
-						<input type="password" name="pass" placeholder="半角英数字8文字以上">
+						<input type="password" name="pass" id="pass" placeholder="半角英数字8文字以上">
 						
 						<p>パスワード確認</p>
-						<input type="password" name="pass2">
+						<input type="password" id="pass2">
 						
 						<p>ニックネーム</p>
 						<input type="text" name="nickname">
@@ -124,10 +135,11 @@
 						<p>答え</p>
 						<input type="text" name="answer">
 						<br>
-						<input type="submit" value="確認" onclick="errorcheck()">
+						<input type="submit" value="確認" onClick="return errorcheck()"/>
 					</form>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript" src='<c:url value="/js/Registration.js"/>'></script>
 	</body>
 </html>
