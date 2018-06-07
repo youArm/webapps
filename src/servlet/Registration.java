@@ -62,7 +62,7 @@ public class Registration extends HttpServlet {
 			PassWordDao passDao = new PassWordDao();
 			passDao.registrationPassword(userBean.getUserId(), encryptPass);
 
-			path = "Registration_Complete.jsp";
+			path = "User_Registration_Complete.jsp";
 		}
 
 		request.getRequestDispatcher(path).forward(request, response);
@@ -92,7 +92,7 @@ public class Registration extends HttpServlet {
 		
 		if(useridflg == false){
 			request.setAttribute("msgflg","1");
-			path = "Registration.jsp";
+			path = "User_Registration.jsp";
 			
 		}else if(useridflg = true){
 			UserBean userBean = new UserBean();
@@ -114,7 +114,7 @@ public class Registration extends HttpServlet {
 			session.setAttribute("userBean",userBean);
 			session.setAttribute("passBean",passBean);
 			
-			path = "Registration_Confirmation.jsp";
+			path = "User_Registration_Confirmation.jsp";
 
 		}
 		
