@@ -30,7 +30,6 @@ public class DaoBase {
 	 */
 	public Connection connection() throws Exception {
 		
-		System.out.println("*****００００");
 		//データソースがなければ、context.xmlから読み込んで設定する
 		if (ds == null) {
 			ds = (DataSource) (new InitialContext()).lookup("java:comp/env/jdbc/Myds");

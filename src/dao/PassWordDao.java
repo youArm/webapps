@@ -1,7 +1,5 @@
 package dao;
 
-import model.PassWordBean;
-
 public class PassWordDao extends DaoBase {
 
 	public PassWordDao() {
@@ -9,7 +7,7 @@ public class PassWordDao extends DaoBase {
 	}
 	
 	//パスワードのハッシュ化
-	public void registrationPassword(PassWordBean passBean) {
+	public void registrationPassword(String userid,String pass) {
 		try {
 			// connection確立
 			super.connection();
@@ -19,8 +17,8 @@ public class PassWordDao extends DaoBase {
 			
 			stmt = con.prepareStatement(insertSQL);
 			// SQLの？に値のセット
-			stmt.setString(1, passBean.getUserid());
-			stmt.setString(2, passBean.getPass());
+			stmt.setString(1, userid);
+			stmt.setString(2, pass);
 			stmt.executeUpdate();
 			
 		} catch (Exception e) {

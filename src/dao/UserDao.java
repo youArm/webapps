@@ -10,7 +10,6 @@ public class UserDao extends DaoBase {
 
 	// ユーザ登録
 	public void registrationUser(UserBean ubean) {
-		System.out.println("*****００００");
 		try {
 
 			// connection確立
@@ -20,8 +19,6 @@ public class UserDao extends DaoBase {
 			String sql = "insert into user(user_id,name,gender,birth_year,birth_month,birth_day,prefectures,question_id,answer) values(?,?,?,?,?,?,?,?,?)";
 
 			stmt = con.prepareStatement(sql);
-
-			System.out.println("*****");
 
 			// SQLの？に値のセット
 			stmt.setString(1, ubean.getUserId());
@@ -36,7 +33,6 @@ public class UserDao extends DaoBase {
 			stmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("*****11111");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -50,14 +46,14 @@ public class UserDao extends DaoBase {
 
 	// 会員登録時のユーザID重複チェック
 	public boolean userIDcheck(String userid) {
-
+		
 		boolean flg = false;
 
 		try {
 			// connection確立
 			super.connection();
 
-			String selectSQL = "select userid from user where userid = ?";
+			String selectSQL = "select count(*) from user where user_id = ?";
 
 			stmt = con.prepareStatement(selectSQL);
 			// SQLの？に値のセット
@@ -66,12 +62,10 @@ public class UserDao extends DaoBase {
 			
 			rs.next();
 			
-			System.out.println("aaaaa");
-			
-			if (rs != null) {
-				flg = true;
-			} else {
+			if (rs.getInt(1) > 0) {
 				flg = false;
+			} else {
+				flg = true;
 			}
 
 		} catch (Exception e) {

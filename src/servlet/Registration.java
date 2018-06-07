@@ -7,8 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.PassWordDao;
 import dao.UserDao;
+import model.HashPassword;
 import model.PassWordBean;
 import model.UserBean;
 
@@ -32,8 +35,37 @@ public class Registration extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String path = "";
+		
+		HttpSession session = request.getSession(false);
+		
+		if (session == null) {
+			
+			path = "Registration.jsp";
+		
+		} else {
+			PassWordBean passBean = (PassWordBean) session.getAttribute("passBean");
+			UserBean userBean = (UserBean) session.getAttribute("userBean");
+			
+			// パスワードをSHA-256でハッシュ化
+			HashPassword hashPass = new HashPassword();
+			String encryptPass = hashPass.encryptPass(passBean.getPass());
+			
+			// passのsessionを破棄
+			session.removeAttribute("passBean");
+
+			// ユーザ情報をuserテーブルに格納
+			UserDao userdao = new UserDao();
+			userdao.registrationUser(userBean);
+			// パスワードをauth_infoテーブルに格納
+			PassWordDao passDao = new PassWordDao();
+			passDao.registrationPassword(userBean.getUserId(), encryptPass);
+
+			path = "Registration_Complete.jsp";
+		}
+
+		request.getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**
@@ -53,11 +85,10 @@ public class Registration extends HttpServlet {
 		String questionId = request.getParameter("question");
 		String answer = request.getParameter("answer");
 		
-		boolean useridflg = true;
 		String path = "";
 		
 		UserDao userdao = new UserDao();
-		useridflg = userdao.userIDcheck(userid);
+		boolean useridflg = userdao.userIDcheck(userid);
 		
 		if(useridflg == false){
 			request.setAttribute("msgflg","1");
@@ -79,8 +110,9 @@ public class Registration extends HttpServlet {
 			passBean.setUserid(userid);
 			passBean.setPass(pass);
 			
-			request.setAttribute("userbean",userBean);
-			request.setAttribute("passbean",passBean);
+			HttpSession session = request.getSession();
+			session.setAttribute("userBean",userBean);
+			session.setAttribute("passBean",passBean);
 			
 			path = "Registration_Confirmation.jsp";
 
