@@ -21,13 +21,13 @@
 				<h1>基本情報変更</h1>
 				
 				<h2>基本情報</h2>
-				<form action="InfomationChange" method="post">
+				<form action="User_Infomation_Change" method="post">
 				
 					<p>ユーザーID</p>
-					<input type="text" value="<%= userbean.getUserId()%>" disabled="disabled">
+					<input type="text" value="<%= userbean.getUserId()%>" disabled="disabled" required>
 	
 					<p>ニックネーム</p>
-					<input type="text" name="nickname" placeholder="<%=userbean.getNickname()%>">
+					<input type="text" name="nickname" placeholder="<%=userbean.getNickname()%>" required>
 					
 					<p>性別</p>
 					<input type="radio" name="gender" value="男">男 &nbsp&nbsp
@@ -56,7 +56,7 @@
 					</select> 日
 					
 					<p>都道府県</p>
-					<select name="plefectures">
+					<select name="plefectures" required>
 						<option value="北海道" selected>北海道</option>
 						<option value="青森県">青森県</option>
 						<option value="岩手県">岩手県</option>
@@ -108,7 +108,7 @@
 					</select>
 					
 					<p>秘密の質問</p>
-					<select name="question">
+					<select name="question" required>
 						<option value="1">思い出の場所は？</option>
 						<option value="2">好きな食べ物は？</option>
 						<option value="3">尊敬する人は？</option>
@@ -117,9 +117,9 @@
 					</select>
 			
 					<p>答え</p>
-					<input type="text" name="answer">
+					<input type="text" name="answer" required>
 					<br>
-					<input type="submit" value="確認" onClick="return errorcheck()"/>
+					<input type="submit" value="確認">
 					
 				</form>
 			</div>
