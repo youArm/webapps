@@ -80,5 +80,39 @@ public class UserDao extends DaoBase {
 		}
 		return flg;
 	}
+	
+	//ユーザ情報変更
+	
+	public void updateUser(UserBean userbean){
+		try {
+			// connection確立
+			super.connection();
+
+			String updateSQL = "UPDATE user SET name = ?,gender = ?,birth_year = ?,birth_month = ?,birth_day = ?,prefectures = ?,question_id = ?,answer = ? WHERE userid = ?";
+			
+			stmt = con.prepareStatement(updateSQL);
+			// SQLの？に値のセット
+			stmt.setString(1, userbean.getNickname());
+			stmt.setString(2, userbean.getGender());
+			stmt.setInt(3, userbean.getBirthYear());
+			stmt.setInt(4, userbean.getBirthMonth());
+			stmt.setInt(5, userbean.getBirthDay());
+			stmt.setString(6, userbean.getPrefectures());
+			stmt.setString(7, userbean.getQuestionId());
+			stmt.setString(8, userbean.getAnswer());
+			stmt.setString(9, userbean.getUserId());
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+	}
 
 }

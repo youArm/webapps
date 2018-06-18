@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	情報変更が浣腸しました。
+	
 </body>
 </html>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDao;
 import model.UserBean;
 
 /**
@@ -31,8 +32,27 @@ public class User_Infomation_Change extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String path = "";
+		
+		HttpSession session = request.getSession(false);
+		
+		if (session == null) {
+			
+			path = "Login.jsp";
+		
+		} else {
+			UserBean userBean = (UserBean) session.getAttribute("userBean");
+			
+			// ユーザ情報をuserテーブルに格納
+			UserDao userdao = new UserDao();
+			userdao.updateUser(userBean);
+
+			path = "User_Change_Complete.jsp";
+		}
+
+		request.getRequestDispatcher(path).forward(request, response);
+		
 	}
 
 	/**

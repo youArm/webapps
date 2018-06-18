@@ -22,10 +22,10 @@
 				
 				<h2>基本情報</h2>
 				<form action="User_Infomation_Change" method="post">
-				
+					
 					<p>ユーザーID</p>
 					<input type="text" value="<%= userbean.getUserId()%>" disabled="disabled" required>
-	
+					
 					<p>ニックネーム</p>
 					<input type="text" name="nickname" placeholder="<%=userbean.getNickname()%>" required>
 					
@@ -115,7 +115,7 @@
 						<option value="4">子供の頃のニックネームは？</option>
 						<option value="5">好きな本のタイトルは？</option>
 					</select>
-			
+					
 					<p>答え</p>
 					<input type="text" name="answer" required>
 					<br>
