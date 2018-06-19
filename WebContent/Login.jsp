@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%
 	String login = (String)session.getAttribute("login");
 	session.invalidate(); %>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,14 +41,14 @@
 			<%if(login != null){ %>
 					<h5 style="color:red"><%= login %><%} %></h5>
 			<form class="form-signin" action = "UserLogin" method = "Post">
-				<span id="reauth-email" class="reauth-email"></span> 
+				<span id="reauth-email" class="reauth-email"></span>
 				<input id="inputEmail" class="form-control" placeholder="UserID" required autofocus name = "id">
 				<input type="password" id="inputPassword" class="form-control" name = "pass" placeholder="Password" required>
 				<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value = "Sign in">
 			</form>
 			<!-- /form -->
-			<br> 
-			<a href="userinsert.jsp" class="new-member">
+			<br>
+			<a href="User_Registration.jsp" class="new-member">
 			 New member registration </a>
 		</div>
 		<!-- /card-container -->

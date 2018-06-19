@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
-<%	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
 	String sysYear = (new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()));
 	int isysYear = Integer.parseInt(sysYear);
 %>
@@ -10,7 +10,7 @@
 <%
 	String msgflg = (String) request.getAttribute("msgflg");
 	String msg = "";
-	
+
 	//request変数に値が入っていたらエラーメッセージを格納
 	if (msgflg != null) {
 		msg = "ユーザIDが重複しています。";
@@ -24,53 +24,53 @@
     	<title>会員登録</title>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
-	
+
 	<body>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<h1>基本情報登録</h1>
-					
+
 					<form action="Registration" method="post" name="regist">
 						<p>ユーザーID</p>
 						<input type="text" name="userid" placeholder="半角英数字24文字以内" required>
 						<%=msg %>
-						
+
 						<p>パスワード</p>
 						<input type="password" name="pass" id="pass" placeholder="半角英数字8文字以上" required>
-						
+
 						<p>パスワード確認</p>
 						<input type="password" id="pass2" required>
-						
+
 						<p>ニックネーム</p>
 						<input type="text" name="nickname" required>
-						
+
 						<p>性別</p>
 						<input type="radio" name="gender" value="男">男 &nbsp&nbsp
 						<input type="radio" name="gender" value="女">女
-						
+
 						<p>生年月日</p>
 						<select name="birthyear" required>
 							<option value="">-</option>
 							<% for(int year=1900;year<=isysYear;year++){ %>
 								<option value=<%=year%>><%=year%></option>
 							<%} %>
-						</select> 年 
-						
+						</select> 年
+
 						<select name="birthmonth" required>
 							<option value="">-</option>
 							<% for(int month=1;month<=12;month++){ %>
 								<option value=<%=month%>><%=month%></option>
 							<%} %>
 						</select> 月
-						
+
 						<select name="birthday" required>
 							<option value="">-</option>
 							<% for(int day=1;day<=31;day++){ %>
 								<option value=<%=day%>><%=day %></option>
 							<%} %>
 						</select> 日
-						
+
 						<p>都道府県</p>
 						<select name="plefectures" required>
 							<option value="北海道" selected>北海道</option>
@@ -122,7 +122,7 @@
 							<option value="沖縄県">沖縄県</option>
 							<option value=""></option>
 						</select>
-						
+
 						<p>秘密の質問</p>
 						<select name="question" required>
 							<option value="1">思い出の場所は？</option>
@@ -131,7 +131,7 @@
 							<option value="4">子供の頃のニックネームは？</option>
 							<option value="5">好きな本のタイトルは？</option>
 						</select>
-				
+
 						<p>答え</p>
 						<input type="text" name="answer" required>
 						<br>

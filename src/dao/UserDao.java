@@ -46,7 +46,7 @@ public class UserDao extends DaoBase {
 
 	// 会員登録時のユーザID重複チェック
 	public boolean userIDcheck(String userid) {
-		
+
 		boolean flg = false;
 
 		try {
@@ -59,9 +59,9 @@ public class UserDao extends DaoBase {
 			// SQLの？に値のセット
 			stmt.setString(1, userid);
 			rs = stmt.executeQuery();
-			
+
 			rs.next();
-			
+
 			if (rs.getInt(1) > 0) {
 				flg = false;
 			} else {
@@ -79,6 +79,10 @@ public class UserDao extends DaoBase {
 			}
 		}
 		return flg;
+	}
+
+	public UserBean getUser(String user_id) {
+		return null;
 	}
 
 }
