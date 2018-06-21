@@ -19,7 +19,6 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1>基本情報変更</h1>
-					
 					<h2>基本情報</h2>
 					<form action="InfomationChange" method="post">
 					

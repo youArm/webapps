@@ -22,7 +22,6 @@ public class VoteDao extends DaoBase{
 			}
 		}
 	}
-	public 
 		
 }
 

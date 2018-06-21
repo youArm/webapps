@@ -43,7 +43,7 @@ public class Voteadd extends HttpServlet {
 		
 		request.setAttribute("con_d_id", con_d_id);
 		request.setAttribute("con_id", con_id);
-		
+	
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Vote_Result");
 		dispatcher.forward(request, response);
 		
