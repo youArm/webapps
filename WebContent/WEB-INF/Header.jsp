@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="model.UserBean"%>
-<%	
+<%
 	UserBean user = (UserBean)session.getAttribute("userbean");
 	%>
 <!DOCTYPE html>
@@ -45,14 +45,14 @@
 				ホーム
 			</a>
 		</div>
-		
+
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
 				<li><a href="Mypage">マイページ</a></li>
 				<li><a href="Voted.jsp">投票履歴</a></li>
 				<li><a href="UserLogin">ログアウト</a></li>
 			</ul>
-			
+
 			<form action = "Search">
 					<select name = category>
 						<option value = "hobby">エンターテイメントと趣味</option>
@@ -72,11 +72,11 @@
 					<input type = "text" name = "search"  >
 					<input type = "submit" value = "検索">
 			</form>
-			
+
 		</div>
 	</div>
-	
-	
+
+
 </nav></header>
 </body>
 </html>
