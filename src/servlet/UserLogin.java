@@ -57,6 +57,7 @@ public class UserLogin extends HttpServlet {
 
 				HashPassword  hash = new HashPassword();
 				String pass = hash.encryptPass(password);
+				//s
 
 				flg = PasswordDao.LoginUser(userid, pass);
 				if(flg == true){//ログイン成功時
