@@ -48,8 +48,11 @@
 			</form>
 			<!-- /form -->
 			<br>
-			<a href="User_Registration.jsp" class="new-member">
+			<a href="F_Registration" class="new-member">
 			 New member registration </a>
+			 
+			<a href="F_PassForget" class="new-member">
+			 パスワードを忘れた場合</a>
 		</div>
 		<!-- /card-container -->
 	</div>

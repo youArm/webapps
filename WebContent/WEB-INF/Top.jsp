@@ -24,7 +24,7 @@
 				<br>
 				<a href="#" class="square_btn">アンケート３</a><br>
 				<br>
-				<a href="#" class="square_fsn">アンケート一覧</a><br>
+				<a href="ContentList" class="square_fsn">アンケート一覧</a><br>
 				<br>
 				<a href="#" class="square_fsn">アンケートを作る</a><br>
 			</div>

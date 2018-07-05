@@ -8,7 +8,17 @@
 </head>
 <body>
 	
-	情報変更が完了しました。
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<h1>パスワード再発行が完了しました</h1>
+				
+				<a href="Login.jsp">ログイン</a>
+				
+			</div>
+		</div>
+	</div>
 	
 </body>
 </html>

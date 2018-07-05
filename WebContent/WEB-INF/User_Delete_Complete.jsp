@@ -8,7 +8,15 @@
 </head>
 <body>
 	
-	情報変更が完了しました。
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
 	
+				<h2>ご利用ありがとうございました。</h2>
+				<a href="Login.jsp">ログイン</a>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

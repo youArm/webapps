@@ -15,6 +15,10 @@ public class UserBean implements Serializable {
 	private String answer;
 	private String authority;
 	
+	public UserBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+	
 	public String getUserId() {
 		return userId;
 	}

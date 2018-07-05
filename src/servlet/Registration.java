@@ -42,7 +42,7 @@ public class Registration extends HttpServlet {
 		
 		if (session == null) {
 			
-			path = "Registration.jsp";
+			path = "WEB-INF/Registration.jsp";
 		
 		} else {
 			PassWordBean passBean = (PassWordBean) session.getAttribute("passBean");
@@ -62,7 +62,7 @@ public class Registration extends HttpServlet {
 			PassWordDao passDao = new PassWordDao();
 			passDao.registrationPassword(userBean.getUserId(), encryptPass);
 
-			path = "User_Registration_Complete.jsp";
+			path = "WEB-INF/User_Registration_Complete.jsp";
 		}
 
 		request.getRequestDispatcher(path).forward(request, response);
@@ -92,7 +92,7 @@ public class Registration extends HttpServlet {
 		
 		if(useridflg == false){
 			request.setAttribute("msgflg","1");
-			path = "User_Registration.jsp";
+			path = "WEB-INF/User_Registration.jsp";
 			
 		}else if(useridflg = true){
 			UserBean userBean = new UserBean();
@@ -100,8 +100,8 @@ public class Registration extends HttpServlet {
 			userBean.setNickname(nickname);
 			userBean.setGender(gender);
 			userBean.setBirthYear(birthyear);
-			userBean.setBirthYear(birthmonth);
-			userBean.setBirthYear(birthday);
+			userBean.setBirthMonth(birthmonth);
+			userBean.setBirthDay(birthday);
 			userBean.setPrefectures(plefectures);
 			userBean.setQuestionId(questionId);
 			userBean.setAnswer(answer);
@@ -114,7 +114,7 @@ public class Registration extends HttpServlet {
 			session.setAttribute("userBean",userBean);
 			session.setAttribute("passBean",passBean);
 			
-			path = "User_Registration_Confirmation.jsp";
+			path = "WEB-INF/User_Registration_Confirmation.jsp";
 
 		}
 		

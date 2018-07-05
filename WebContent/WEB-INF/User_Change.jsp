@@ -24,7 +24,8 @@
 				<form action="User_Infomation_Change" method="post">
 					
 					<p>ユーザーID</p>
-					<input type="text" value="<%= userbean.getUserId()%>" disabled="disabled" required>
+					<input type="text" value="<%= userbean.getUserId()%>" readonly="readonly"  name="userid" required>
+					<label><font color="#ff0000">*ユーザIDは変更できません</font></label>
 					
 					<p>ニックネーム</p>
 					<input type="text" name="nickname" placeholder="<%=userbean.getNickname()%>" required>

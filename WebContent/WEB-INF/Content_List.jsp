@@ -7,8 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	情報変更が完了しました。
-	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				
+				<h1>アンケート一覧</h1>
+				
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>

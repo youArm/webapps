@@ -82,13 +82,12 @@ public class UserDao extends DaoBase {
 	}
 	
 	//ユーザ情報変更
-	
 	public void updateUser(UserBean userbean){
 		try {
 			// connection確立
 			super.connection();
 
-			String updateSQL = "UPDATE user SET name = ?,gender = ?,birth_year = ?,birth_month = ?,birth_day = ?,prefectures = ?,question_id = ?,answer = ? WHERE userid = ?";
+			String updateSQL = "UPDATE user SET name = ?,gender = ?,birth_year = ?,birth_month = ?,birth_day = ?,prefectures = ?,question_id = ?,answer = ? WHERE user_id = ?";
 			
 			stmt = con.prepareStatement(updateSQL);
 			// SQLの？に値のセット
@@ -114,9 +113,108 @@ public class UserDao extends DaoBase {
 			}
 		}
 	}
+	
+	//特定のユーザ情報取得
+	public UserBean getUser(String userid) {
+		
+		UserBean userbean = new UserBean();
+		
+		try {
+			// connection確立
+			super.connection();
 
-	public UserBean getUser(String user_id) {
-		return null;
+			String selectSQL = "select * from user where user_id = ?";
+
+			stmt = con.prepareStatement(selectSQL);
+			// SQLの？に値のセット
+			stmt.setString(1, userid);
+			rs = stmt.executeQuery();
+
+			rs.next();
+
+			userbean.setUserId(rs.getString(1));
+			userbean.setNickname(rs.getString(2));
+			userbean.setGender(rs.getString(3));
+			userbean.setBirthYear(rs.getInt(4));
+			userbean.setBirthMonth(rs.getInt(5));
+			userbean.setBirthDay(rs.getInt(6));
+			userbean.setPrefectures(rs.getString(7));
+			userbean.setQuestionId(rs.getString(8));
+			userbean.setAnswer(rs.getString(9));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+		return userbean;
+		
 	}
+	
+	//ユーザ削除
+	public void deleteUser(String userid){
+		try {
+			// connection確立
+			super.connection();
 
+			String updateSQL = "DELETE FROM user WHERE user_id = ?";
+			
+			stmt = con.prepareStatement(updateSQL);
+			// SQLの？に値のセット
+			stmt.setString(1, userid);
+			stmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+	}
+	
+	//特定のユーザの秘密の質問の答えを取得
+	public UserBean getAnswer(String userid){
+		
+		UserBean userbean = new UserBean();
+		
+		try {
+			// connection確立
+			super.connection();
+
+			String selectSQL = "select question_id,answer from user where user_id = ?";
+
+			stmt = con.prepareStatement(selectSQL);
+			// SQLの？に値のセット
+			stmt.setString(1, userid);
+			rs = stmt.executeQuery();
+
+			rs.next();
+			
+			userbean.setQuestionId(rs.getString(1));
+			userbean.setAnswer(rs.getString(2));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+		return userbean;
+		
+	}
+	
 }
+	

@@ -32,8 +32,6 @@ public class UserLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//ログアウト処理
 				HttpSession session = request.getSession();
 				session.invalidate();
@@ -57,17 +55,16 @@ public class UserLogin extends HttpServlet {
 
 				HashPassword  hash = new HashPassword();
 				String pass = hash.encryptPass(password);
-				//s
-
+				
 				flg = PasswordDao.LoginUser(userid, pass);
 				if(flg == true){//ログイン成功時
 
-					path = "Top.jsp";
+					path = "WEB-INF/Top.jsp";
 
 					UserBean user = new UserBean();
 					UserDao udao = new UserDao();
 					user = udao.getUser(userid);
-					session.setAttribute("user",user);
+					session.setAttribute("userBean",user);
 				}else{//ログイン失敗時
 
 					session.setAttribute("login", "IDとパスワードを正しく入力してください");

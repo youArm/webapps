@@ -48,8 +48,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
-				<li><a href="Mypage">マイページ</a></li>
-				<li><a href="Voted.jsp">投票履歴</a></li>
+				<li><a href="F_Mypage">マイページ</a></li>
+				<li><a href="">投票履歴</a></li>
 				<li><a href="UserLogin">ログアウト</a></li>
 			</ul>
 

@@ -6,7 +6,7 @@ public class PassWordDao extends DaoBase {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	//パスワードのハッシュ化
+	//パスワードの登録
 	public void registrationPassword(String userid,String pass) {
 		try {
 			// connection確立
@@ -32,6 +32,32 @@ public class PassWordDao extends DaoBase {
 			}
 		}
 	}
+	
+	public void UpdatePass(String userid,String pass){
+		try {
+			// connection確立
+			super.connection();
+
+			// ユーザーを登録するSQL
+			String SQL = "UPDATE password SET password = ? WHERE user_id = ?";
+
+			stmt = con.prepareStatement(SQL);
+			// SQLの？に値のセット
+			stmt.setString(1, pass);
+			stmt.setString(2, userid);
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+	}
 
 	public  boolean LoginUser(String userid,String pass) {
 
@@ -41,19 +67,16 @@ public class PassWordDao extends DaoBase {
 			super.connection();
 
 			// ユーザーを登録するSQL
-			String SQL = "SELECT * FROM password WHERE user_id=? and password=?";
+			String SQL = "SELECT * FROM password WHERE user_id = ? and password = ?";
 
 			stmt = con.prepareStatement(SQL);
 			// SQLの？に値のセット
 			stmt.setString(1, userid);
 			stmt.setString(2, pass);
 			rs = stmt.executeQuery();
-
-			rs.next();
-			if(rs!=null) {
+			
+			while(rs.next()){
 				flg = true;
-			}else {
-				flg = false;
 			}
 
 		} catch (Exception e) {
