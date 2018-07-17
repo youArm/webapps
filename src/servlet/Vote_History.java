@@ -10,21 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.VoteDao;
-import model.Vote_result_Info_Bean;
+import dao.Vote_HistoryDao;
+import model.Vote_History_Bean;
+import model.Vote_Info_Bean;
 import model.Vote_result_bean;
 
 /**
- * Servlet implementation class Vote_Result
+ * Servlet implementation class Vote_History
  */
-@WebServlet("/Vote_Result")
-public class Vote_Result extends HttpServlet {
+@WebServlet("/Vote_History")
+public class Vote_History extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Vote_Result() {
+    public Vote_History() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +35,19 @@ public class Vote_Result extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String con_id=(String)request.getAttribute("con_id");
-		Vote_result_Info_Bean VriB=new Vote_result_Info_Bean();
-		RequestDispatcher dispatcher = null;
-		ArrayList<Vote_result_bean> list=new ArrayList<Vote_result_bean>();
+		String user_id="test";
+		Vote_HistoryDao VH = new Vote_HistoryDao();
+		Vote_Info_Bean VIB = new Vote_Info_Bean();
 		
-		VoteDao Vote = new VoteDao();
-		VriB=Vote.result1(con_id);
-		list=VriB.getvoteArray();
+		ArrayList<Vote_History_Bean> list=new ArrayList<Vote_History_Bean>();
+		
+		VIB=VH.History(user_id);
+		
+		list=VIB.getvoteArray();
 		request.setAttribute("vort", list);
-        request.setAttribute("itemList", VriB);
+        request.setAttribute("itemList", VIB);
         
-        dispatcher = request.getRequestDispatcher("WEB-INF/Vote_Result.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Vote_History.jsp");
         dispatcher.forward(request, response);
 		
 	}
@@ -56,6 +58,7 @@ public class Vote_Result extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 	}
 
 }
