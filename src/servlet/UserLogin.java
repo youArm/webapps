@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ContentsDao;
 import dao.PassWordDao;
 import dao.UserDao;
+import model.ContentsBean;
 import model.HashPassword;
 import model.UserBean;
 /**
@@ -42,8 +45,6 @@ public class UserLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		//ログイン処理
 				HttpSession session = request.getSession();
 				String path ="";
@@ -58,16 +59,23 @@ public class UserLogin extends HttpServlet {
 				
 				flg = PasswordDao.LoginUser(userid, pass);
 				if(flg == true){//ログイン成功時
-
+					
 					path = "WEB-INF/Top.jsp";
-
+					
 					UserBean user = new UserBean();
 					UserDao udao = new UserDao();
 					user = udao.getUser(userid);
 					session.setAttribute("userBean",user);
+					
+					ArrayList<ContentsBean> arrayTopContents = new ArrayList<ContentsBean>();
+					ContentsDao contentsdao = new ContentsDao();
+					arrayTopContents = contentsdao.getTopContentsList();
+					
+					request.setAttribute("arrayTopContents", arrayTopContents);
+					
 				}else{//ログイン失敗時
 
-					session.setAttribute("login", "IDとパスワードを正しく入力してください");
+					session.setAttribute("login","IDとパスワードを正しく入力してください");
 					path="Login.jsp";
 				}
 

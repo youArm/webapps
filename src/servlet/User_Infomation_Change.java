@@ -26,7 +26,7 @@ public class User_Infomation_Change extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,10 +46,10 @@ public class User_Infomation_Change extends HttpServlet {
 			
 			UserDao userdao = new UserDao();
 			userdao.updateUser(userBean);
-
+			
 			path = "WEB-INF/User_Change_Complete.jsp";
 		}
-
+		
 		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
@@ -60,7 +60,12 @@ public class User_Infomation_Change extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userid = request.getParameter("userid");
+		HttpSession session = request.getSession();
+		
+		UserBean userBean = new UserBean();
+		
+		userBean = (UserBean)session.getAttribute("userBean");
+		
 		String nickname = request.getParameter("nickname");
 		String gender = request.getParameter("gender");
 		int birthyear = Integer.parseInt(request.getParameter("birthyear"));
@@ -72,8 +77,7 @@ public class User_Infomation_Change extends HttpServlet {
 		
 		String path = "";
 		
-		UserBean userBean = new UserBean();
-		userBean.setUserId(userid);
+		userBean.setUserId(userBean.getUserId());
 		userBean.setNickname(nickname);
 		userBean.setGender(gender);
 		userBean.setBirthYear(birthyear);
@@ -83,7 +87,6 @@ public class User_Infomation_Change extends HttpServlet {
 		userBean.setQuestionId(questionId);
 		userBean.setAnswer(answer);
 		
-		HttpSession session = request.getSession();
 		session.setAttribute("userBean",userBean);
 		
 		request.getRequestDispatcher("WEB-INF/User_Change_Confirmation.jsp").forward(request, response);

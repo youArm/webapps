@@ -213,7 +213,6 @@ public class UserDao extends DaoBase {
 			}
 		}
 		return userbean;
-		
 	}
 	
 }

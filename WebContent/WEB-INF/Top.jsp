@@ -1,6 +1,13 @@
 <%@ page language="java" contentType ="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ page import="java.util.ArrayList"
+	import="model.ContentsBean"
+%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%	ArrayList<ContentsBean> arrayTopContents = new ArrayList<ContentsBean>();
+	arrayTopContents = (ArrayList<ContentsBean>)request.getAttribute("arrayTopContents");
+%> 
 
 <!DOCTYPE html>
 <html>
@@ -17,20 +24,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			
-				<a href="#" class="square_btn">アンケート１</a><br>
-				<br>
-				<a href="#" class="square_btn">アンケート２</a><br>
-				<br>
-				<a href="#" class="square_btn">アンケート３</a><br>
-				<br>
-				<a href="ContentList" class="square_fsn">アンケート一覧</a><br>
+				<% for(int count=0;count<arrayTopContents.size();count++){%>
+					<p><a href="ContentsDetail?conId=<%=arrayTopContents.get(count).getConId()%>"><%= arrayTopContents.get(count).getConName()%></a></p>
+				<%} %>
+				
+				<a href="ContentsList" class="square_fsn">アンケート一覧</a><br>
 				<br>
 				<a href="#" class="square_fsn">アンケートを作る</a><br>
 			</div>
 		</div>
 	</div>
-					
 		
 </body>
 </html>

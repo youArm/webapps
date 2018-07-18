@@ -8,7 +8,27 @@
 </head>
 <body>
 	
-	情報変更が完了しました。
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<p>情報変更が完了しました。</p>
+				
+				
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<p><a href="F_Top">トップ</a></p>
+			</div>
+			
+			<div class="col-md-6">
+				<p><a href="F_Mypage">マイページ</a></p>
+			</div>
+		</div>
+	</div>
+	
 	
 </body>
 </html>

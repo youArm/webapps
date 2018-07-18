@@ -1,9 +1,11 @@
 package dao;
 
 public class VoteDao extends DaoBase{
+	
 	public VoteDao(){
 		
 	};
+	
 	public void VoteAdd(String con_id,String con_d_id){
 		try{
 			super.connection();
@@ -22,6 +24,4 @@ public class VoteDao extends DaoBase{
 			}
 		}
 	}
-		
 }
-
