@@ -19,11 +19,11 @@
 			</div>
 
 			<div class="col-md-2">
-				<a href="Top.jsp"/>トップへ戻る</a>
+				<a href="F_Top"/>トップ</a>
 			</div>
 
 			<div class="col-md-2">
-				<a href="Mypage.jsp"/>トップへ戻る</a>
+				<a href="F_Mypage"/>マイページ</a>
 			</div>
 		</div>
 	</div>

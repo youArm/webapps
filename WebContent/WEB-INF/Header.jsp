@@ -41,35 +41,36 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="Top.jsp">
+			<a class="navbar-brand" href="F_Top">
 				ホーム
 			</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
-				<li><a href="Mypage">マイページ</a></li>
-				<li><a href="Voted.jsp">投票履歴</a></li>
+				<li><a href="F_Mypage">マイページ</a></li>
+				<li><a href="">投票履歴</a></li>
 				<li><a href="UserLogin">ログアウト</a></li>
 			</ul>
 
 			<form action = "Search">
 					<select name = category>
-						<option value = "hobby">エンターテイメントと趣味</option>
-						<option value = "news">ニュース</option>
-						<option value = "device">デバイス/PC/家電</option>
-						<option value = "Learning">学問/サイエンス</option>
-						<option value = "life">暮らしと生活ガイド</option>
-						<option value = "emotion">恋愛/人間関係</option>
-						<option value = "business">ビジネス/経済とお金</option>
-						<option value = "profession">職業/キャリア</option>
-						<option value = "health">健康/美容/ファッション</option>
-						<option value = "parenting">子育て/学校</option>
-						<option value = "sports">スポーツ/アウトドア/車</option>
-						<option value = "travel">地域/旅行/お出かけ</option>
-						<option value = "other">その他</option>
+						<option value = "0">全て</option>
+						<option value = "1">エンターテイメントと趣味</option>
+						<option value = "2">ニュース</option>
+						<option value = "3">デバイス/PC/家電</option>
+						<option value = "4">学問/サイエンス</option>
+						<option value = "5">暮らしと生活ガイド</option>
+						<option value = "6">恋愛/人間関係</option>
+						<option value = "7">ビジネス/経済とお金</option>
+						<option value = "8">職業/キャリア</option>
+						<option value = "9">健康/美容/ファッション</option>
+						<option value = "10">子育て/学校</option>
+						<option value = "11">スポーツ/アウトドア/車</option>
+						<option value = "12">地域/旅行/お出かけ</option>
+						<option value = "13">その他</option>
 					</select>
-					<input type = "text" name = "search"  >
+					<input type = "text" name = "keyword"  >
 					<input type = "submit" value = "検索">
 			</form>
 

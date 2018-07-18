@@ -26,7 +26,7 @@ public class User_Infomation_Change extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -44,13 +44,12 @@ public class User_Infomation_Change extends HttpServlet {
 		} else {
 			UserBean userBean = (UserBean) session.getAttribute("userBean");
 			
-			// ユーザ情報をuserテーブルに格納
 			UserDao userdao = new UserDao();
 			userdao.updateUser(userBean);
-
-			path = "User_Change_Complete.jsp";
+			
+			path = "WEB-INF/User_Change_Complete.jsp";
 		}
-
+		
 		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
@@ -60,6 +59,12 @@ public class User_Infomation_Change extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
+		UserBean userBean = new UserBean();
+		
+		userBean = (UserBean)session.getAttribute("userBean");
 		
 		String nickname = request.getParameter("nickname");
 		String gender = request.getParameter("gender");
@@ -72,21 +77,20 @@ public class User_Infomation_Change extends HttpServlet {
 		
 		String path = "";
 		
-		UserBean userBean = new UserBean();
+		userBean.setUserId(userBean.getUserId());
 		userBean.setNickname(nickname);
 		userBean.setGender(gender);
 		userBean.setBirthYear(birthyear);
-		userBean.setBirthYear(birthmonth);
-		userBean.setBirthYear(birthday);
+		userBean.setBirthMonth(birthmonth);
+		userBean.setBirthDay(birthday);
 		userBean.setPrefectures(plefectures);
 		userBean.setQuestionId(questionId);
 		userBean.setAnswer(answer);
 		
-		HttpSession session = request.getSession();
 		session.setAttribute("userBean",userBean);
 		
-		path = "User_Change_Confirmation.jsp";
-	
+		request.getRequestDispatcher("WEB-INF/User_Change_Confirmation.jsp").forward(request, response);
+		
 		}
 		
 	}

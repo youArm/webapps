@@ -22,7 +22,7 @@
 				<p>ユーザーID<br><%=userBean.getUserId() %></p>
 				<p>ニックネーム<br><%=userBean.getNickname() %></p>
 				<p>性別<br><%=userBean.getGender() %></p>
-				<p>生年月日<br><%=userBean.getBirthYear() %><%=userBean.getBirthMonth() %><%=userBean.getBirthDay() %></p>
+				<p>生年月日<br><%=userBean.getBirthYear() %>年<%=userBean.getBirthMonth() %>月<%=userBean.getBirthDay() %>日</p>
 				<p>都道府県<br><%=userBean.getPrefectures() %></p>
 				<p>秘密の質問<%=userBean.getQuestionId() %></p>
 				<p>質問の答え<br><%=userBean.getAnswer() %></p>

@@ -18,7 +18,7 @@
 				<h2>ユーザー情報の変更はこちら</h2>
 				<span class="glyphicon glyphicon-hand-down"></span>
 				<br>
-				<a class="btn btn-success" href="User_Update.jsp" role="button">変更</a>
+				<a class="btn btn-success" href="F_UserChange" role="button">変更</a>
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 				<h2>ユーザーの退会はこちら</h2>
 				<span class="glyphicon glyphicon-hand-down"></span>
 				<br>
-				<a class="btn btn-success" href="User_Delete.jsp" role="button">退会</a>
+				<a class="btn btn-success" href="F_DeleteUser" role="button">退会</a>
 			</div>
 		</div>
 	</div>

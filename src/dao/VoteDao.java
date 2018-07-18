@@ -6,9 +6,11 @@ import model.Vote_result_Info_Bean;
 import model.Vote_result_bean;
 
 public class VoteDao extends DaoBase{
+	
 	public VoteDao(){
 		
 	};
+	
 	public void VoteAdd(String con_id,String con_d_id){
 		try{
 			super.connection();
@@ -96,8 +98,6 @@ public class VoteDao extends DaoBase{
 			}
 		}
 		return list;
-		
+	
 	}
-		
 }
-

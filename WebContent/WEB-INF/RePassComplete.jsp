@@ -11,24 +11,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			
-				<p>情報変更が完了しました。</p>
 				
+				<h1>パスワード再発行が完了しました</h1>
 				
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-6">
-				<p><a href="F_Top">トップ</a></p>
-			</div>
-			
-			<div class="col-md-6">
-				<p><a href="F_Mypage">マイページ</a></p>
+				<a href="Login.jsp">ログイン</a>
+				
 			</div>
 		</div>
 	</div>
-	
 	
 </body>
 </html>

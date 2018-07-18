@@ -40,7 +40,7 @@
 						<input type="password" name="pass" id="pass" placeholder="半角英数字8文字以上" required>
 
 						<p>パスワード確認</p>
-						<input type="password" id="pass2" required>
+						<input type="password" id="pass2" required placeholder="もう一度パスワードを入力してください">
 
 						<p>ニックネーム</p>
 						<input type="text" name="nickname" required>
