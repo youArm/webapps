@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="model.UserBean"%>
 <%
-	UserBean user = (UserBean)session.getAttribute("userbean");
+	UserBean user = (UserBean)session.getAttribute("userBean");
 	%>
 <!DOCTYPE html>
 <html>
@@ -48,7 +48,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
-				<li><a href="Mypage">マイページ</a></li>
+				<li><a href="Mypage.jsp">マイページ</a></li>
 				<li><a href="Voted.jsp">投票履歴</a></li>
 				<li><a href="UserLogin">ログアウト</a></li>
 			</ul>

@@ -16,7 +16,7 @@ public class UserDao extends DaoBase {
 			super.connection();
 
 			// ユーザーを登録するSQL
-			String sql = "insert into user(user_id,name,gender,birth_year,birth_month,birth_day,prefectures,question_id,answer) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into user(user_id,name,gender,birth_year,birth_month,birth_day,prefectures,question_id,answer,authority) values(?,?,?,?,?,?,?,?,?,?)";
 
 			stmt = con.prepareStatement(sql);
 
@@ -30,6 +30,7 @@ public class UserDao extends DaoBase {
 			stmt.setString(7, ubean.getPrefectures());
 			stmt.setString(8, ubean.getQuestionId());
 			stmt.setString(9, ubean.getAnswer());
+			stmt.setString(10, ubean.getAuthority());
 			stmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -81,8 +82,47 @@ public class UserDao extends DaoBase {
 		return flg;
 	}
 
-	public UserBean getUser(String user_id) {
-		return null;
-	}
+	//特定のユーザ情報取得
+		public UserBean getUser(String userid) {
+
+			UserBean userbean = new UserBean();
+
+			try {
+				// connection確立
+				super.connection();
+
+				String selectSQL = "select * from user where user_id = ?";
+
+				stmt = con.prepareStatement(selectSQL);
+				// SQLの？に値のセット
+				stmt.setString(1, userid);
+				rs = stmt.executeQuery();
+
+				rs.next();
+
+				userbean.setUserId(rs.getString(1));
+				userbean.setNickname(rs.getString(2));
+				userbean.setGender(rs.getString(3));
+				userbean.setBirthYear(rs.getInt(4));
+				userbean.setBirthMonth(rs.getInt(5));
+				userbean.setBirthDay(rs.getInt(6));
+				userbean.setPrefectures(rs.getString(7));
+				userbean.setQuestionId(rs.getString(8));
+				userbean.setAnswer(rs.getString(9));
+				userbean.setAuthority(rs.getString(10));
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					// エラー時はclose処理
+					super.DbClose();
+				} catch (Exception e) {
+					System.out.println("error");
+				}
+			}
+			return userbean;
+
+		}
 
 }

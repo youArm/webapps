@@ -135,6 +135,7 @@
 						<p>答え</p>
 						<input type="text" name="answer" required>
 						<br>
+						<br>
 						<input type="submit" value="確認" onClick="return errorcheck()"/>
 					</form>
 				</div>

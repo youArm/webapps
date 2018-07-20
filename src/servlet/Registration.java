@@ -21,7 +21,7 @@ import model.UserBean;
 @WebServlet("/Registration")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,23 +35,23 @@ public class Registration extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String path = "";
-		
+
 		HttpSession session = request.getSession(false);
-		
+
 		if (session == null) {
-			
+
 			path = "Registration.jsp";
-		
+
 		} else {
 			PassWordBean passBean = (PassWordBean) session.getAttribute("passBean");
 			UserBean userBean = (UserBean) session.getAttribute("userBean");
-			
+
 			// パスワードをSHA-256でハッシュ化
 			HashPassword hashPass = new HashPassword();
 			String encryptPass = hashPass.encryptPass(passBean.getPass());
-			
+
 			// passのsessionを破棄
 			session.removeAttribute("passBean");
 
@@ -73,7 +73,7 @@ public class Registration extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String userid = request.getParameter("userid");
 		String pass = request.getParameter("pass");
 		String nickname = request.getParameter("nickname");
@@ -84,16 +84,17 @@ public class Registration extends HttpServlet {
 		String plefectures = request.getParameter("plefectures");
 		String questionId = request.getParameter("question");
 		String answer = request.getParameter("answer");
-		
+
+
 		String path = "";
-		
+
 		UserDao userdao = new UserDao();
 		boolean useridflg = userdao.userIDcheck(userid);
-		
+
 		if(useridflg == false){
 			request.setAttribute("msgflg","1");
 			path = "User_Registration.jsp";
-			
+
 		}else if(useridflg = true){
 			UserBean userBean = new UserBean();
 			userBean.setUserId(userid);
@@ -105,27 +106,30 @@ public class Registration extends HttpServlet {
 			userBean.setPrefectures(plefectures);
 			userBean.setQuestionId(questionId);
 			userBean.setAnswer(answer);
-			
+			userBean.setAuthority("U");
+
 			PassWordBean passBean = new PassWordBean();
 			passBean.setUserid(userid);
 			passBean.setPass(pass);
-			
+
 			HttpSession session = request.getSession();
 			session.setAttribute("userBean",userBean);
 			session.setAttribute("passBean",passBean);
-			
+			session.setAttribute("userid",userid);
+			session.setAttribute("pass",pass);
+
 			path = "User_Registration_Confirmation.jsp";
 
 		}
-		
+
 		//HashPassword hashPass = new HashPassword();
 		//String encryptPass = hashPass.encryptPass(pass);
-		
+
 		//PassWordDao passDao = new PassWordDao();
 		//passDao.registrationPassword(passBean);
-		
+
 		request.getRequestDispatcher(path).forward(request, response);
-		
+
 	}
 
 }

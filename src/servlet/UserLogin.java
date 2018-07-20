@@ -61,18 +61,24 @@ public class UserLogin extends HttpServlet {
 				flg = PasswordDao.LoginUser(userid, pass);
 				if(flg == true){//ログイン成功時
 
-					path = "Top.jsp";
 
-					UserBean user = new UserBean();
-					UserDao udao = new UserDao();
-					user = udao.getUser(userid);
-					session.setAttribute("user",user);
-				}else{//ログイン失敗時
 
-					session.setAttribute("login", "IDとパスワードを正しく入力してください");
-					path="Login.jsp";
+				UserBean user = new UserBean();
+				UserDao udao = new UserDao();
+				user = udao.getUser(userid);
+				session.setAttribute("userBean",user);
+
+					if(user.getAuthority().equals("U")) {
+
+						path = "Top.jsp";
+					}else  if(user.getAuthority().equals("A")) {
+						path = "AdmTop.jsp";
+					}else{//ログイン失敗時
+
+						session.setAttribute("login", "IDとパスワードを正しく入力してください");
+						path="Login.jsp";
+					}
 				}
-
 				request.getRequestDispatcher(path).forward(request, response);
 	}
 
