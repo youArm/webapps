@@ -49,7 +49,7 @@
 		<div class="collapse navbar-collapse" id="navbarEexample7">
 			<ul class="nav navbar-nav">
 				<li><a href="F_Mypage">マイページ</a></li>
-				<li><a href="">投票履歴</a></li>
+				<li><a href="Vote_History">投票履歴</a></li>
 				<li><a href="UserLogin">ログアウト</a></li>
 			</ul>
 

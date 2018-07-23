@@ -75,8 +75,6 @@ public class User_Infomation_Change extends HttpServlet {
 		String questionId = request.getParameter("question");
 		String answer = request.getParameter("answer");
 		
-		String path = "";
-		
 		userBean.setUserId(userBean.getUserId());
 		userBean.setNickname(nickname);
 		userBean.setGender(gender);

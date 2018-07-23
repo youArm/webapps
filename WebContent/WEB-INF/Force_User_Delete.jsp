@@ -12,11 +12,11 @@
 		<div class="row">
 			<div class="col-md-12">
 			
-			<h1>退会</h1>
-			<h2>パスワードを入力してください</h2>
-			<form action="UserDelete" method="post">
-				<input type="password" name="pass" placeholder="パスワード" required>
-				<input type="submit" value="退会" onClick="disp()">
+			<h1>ユーザ削除</h1>
+			<h2>ユーザIDを入力してください</h2>
+			<form action="ForceUserDelete" method="post">
+				<input type="text" name="userid" placeholder="ユーザID" required>
+				<input type="submit" value="削除" onClick="disp()">
 			</form>
 			
 			</div>

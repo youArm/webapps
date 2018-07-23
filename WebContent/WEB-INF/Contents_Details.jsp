@@ -20,14 +20,14 @@
 	<div class="container">
 		<div class="row">
 			<% for(int count=0;count<arrayContentsDetails.size();count++){%>
-				<form action="#">
+				<form action="Voteadd">
 					<div class="col-md-3">
 						<p><%=arrayContentsDetails.get(count).getCon_d_name()%></p>
 						<p><%=arrayContentsDetails.get(count).getImage() %></p>
 						<p><%=arrayContentsDetails.get(count).getDescription() %></p>
 						
-						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_id() %>">
-						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_d_id()%>">
+						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_id() %>" name="con_id">
+						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_d_id()%>" name="con_d_id">
 						
 						<input type="submit" value="投票">
 					</div>

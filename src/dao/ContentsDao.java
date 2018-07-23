@@ -90,7 +90,7 @@ public class ContentsDao extends DaoBase{
 		return contentsDetails;
 	}
 	
-	//コンテンツ(アンケート)一覧取得
+	//コンテンツ(アンケート)上位３つ取得
 	public ArrayList<ContentsBean> getTopContentsList(){
 		
 		ArrayList<ContentsBean> contentsList = new ArrayList<ContentsBean>();
@@ -208,4 +208,63 @@ public class ContentsDao extends DaoBase{
 		}
 		return contentsList;
 	}	
+	
+	public void contentsDelete(String conid){
+		try{
+			super.connection();
+			
+			String sql = "DELETE FROM contents WHERE con_id = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, conid);
+			stmt.executeUpdate();
+					
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				super.DbClose();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<ContentsBean> contentsHistory(String userid){
+		
+		ArrayList<ContentsBean> contentsList = new ArrayList<ContentsBean>();
+		
+		try{
+			super.connection();
+			
+			String sql = "SELECT * FROM contents WHERE user_id = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, userid);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()){
+				
+				ContentsBean conBean = new ContentsBean();
+				conBean.setConId(rs.getString(1));
+				conBean.setUserId(rs.getString(2));
+				conBean.setCateId(rs.getString(3));
+				conBean.setConName(rs.getString(4));
+				conBean.setCreateDate(rs.getDate(5));
+				conBean.setCreateEnd(rs.getDate(6));
+				conBean.setTotalVote(rs.getInt(7));
+				
+				contentsList.add(conBean);
+				
+			}
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				super.DbClose();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return contentsList;
+	}
 }

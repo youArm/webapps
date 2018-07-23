@@ -33,5 +33,16 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>アンケート作成履歴</h2>
+				<span class="glyphicon glyphicon-hand-down"></span>
+				<br>
+				<a class="btn btn-success" href="F_ContentsHistory" role="button">アンケート作成履歴</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

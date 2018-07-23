@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.VOTE_MANAGEMENT_Dao;
 import dao.VoteDao;
 import dao.Vote_HistoryDao;
+import model.UserBean;
 
 /**
  * Servlet implementation class Voteadd
@@ -33,12 +35,15 @@ public class Voteadd extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//String con_d_id=request.getParameter("con_d_id");
-		//String con_id=request.getParameter("con_id");
-		//String user_Id=request.getParameter("user_id");
-		String con_d_id="1";
-		String con_id="1";
-		String user_Id="test";
+		
+		HttpSession session = request.getSession();
+		UserBean userbean = new UserBean();
+		userbean = (UserBean)session.getAttribute("userBean");
+		
+		String con_d_id=request.getParameter("con_d_id");
+		String con_id=request.getParameter("con_id");
+		String user_Id=request.getParameter("user_id");
+		
 		String message;
 		
 		boolean flg;
@@ -46,15 +51,15 @@ public class Voteadd extends HttpServlet {
 		
 		VoteDao Vote = new VoteDao();
 		VOTE_MANAGEMENT_Dao VMD = new VOTE_MANAGEMENT_Dao();
-		flg=VMD.votecheck(user_Id, con_id);
+		flg=VMD.votecheck(userbean.getUserId(), con_id);
 		if(flg==true){
 		Vote.VoteAdd(con_id, con_d_id);
 		
-		VMD.vortcheck(user_Id, con_id);
+		VMD.vortcheck(userbean.getUserId(), con_id);
 		
 		Vote_HistoryDao VHD = new Vote_HistoryDao();
 		
-		VHD.Vote_History_add(user_Id, con_id, con_d_id);
+		VHD.Vote_History_add(userbean.getUserId(), con_id, con_d_id);
 		
 	
 		message="投票完了しました";

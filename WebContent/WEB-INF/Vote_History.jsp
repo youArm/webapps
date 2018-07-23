@@ -10,7 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- TODO:2-1 jsp:includeでヘッダー画面を読み込む --%>
+	<%-- TODO:2-1 jsp:includeでヘッダー画面を読み込む --%>
+	<%@ include file="Header.jsp" %>
         <h1>結果一覧</h1>
     <%-- リクエストスコープからBeanクラスの配列を取得 --%>
     <% ArrayList<Vote_History_Bean> List = (ArrayList<Vote_History_Bean>)request.getAttribute("vort"); %>
@@ -31,8 +32,9 @@
                 <% }%>
             </tbody>
         </table>
-        <a href="go"><input type="button" value="モドる"></a>
     </form>
+    
+    <a href="javascript:history.back();">戻る</a>
 
 </body>
 </html>
