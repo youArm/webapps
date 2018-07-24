@@ -26,6 +26,7 @@
 				<a href="#" class="square_fsn">アンケート一覧</a><br>
 				<br>
 				<a class="btn btn-success" href="Content_Registration.jsp" role="button">アンケートを作る</a><br>
+				<br>
 			</div>
 		</div>
 	</div>
