@@ -22,19 +22,21 @@
 			<% for(int count=0;count<arrayContentsDetails.size();count++){%>
 				<form action="Voteadd">
 					<div class="col-md-3">
-						<p><%=arrayContentsDetails.get(count).getCon_d_name()%></p>
-						<p><%=arrayContentsDetails.get(count).getImage() %></p>
-						<p><%=arrayContentsDetails.get(count).getDescription() %></p>
+						<h5><%=arrayContentsDetails.get(count).getCon_d_name()%></h5>
+						<img src="./<%=arrayContentsDetails.get(count).getImage() %>" width="100" height="100">
+						<h5><%=arrayContentsDetails.get(count).getDescription() %></h5>
 						
 						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_id() %>" name="con_id">
 						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_d_id()%>" name="con_d_id">
 						
-						<input type="submit" value="投票">
+						<input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="投票">
 					</div>
 				</form>
 			<%} %>
 		</div>
 	</div>
+	
+	<%@ include file="Footer.jsp" %>
 	
 </body>
 </html>

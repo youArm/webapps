@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>マイページ</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
@@ -40,9 +40,12 @@
 				<h2>アンケート作成履歴</h2>
 				<span class="glyphicon glyphicon-hand-down"></span>
 				<br>
-				<a class="btn btn-success" href="F_ContentsHistory" role="button">アンケート作成履歴</a>
+				<a class="btn btn-success" href="F_Contents_History" role="button">アンケート作成履歴</a>
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="Footer.jsp" %>
+	
 </body>
 </html>

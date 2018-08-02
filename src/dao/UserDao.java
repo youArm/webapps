@@ -45,41 +45,41 @@ public class UserDao extends DaoBase {
 	}
 	
 	// 管理者登録
-		public void registrationAdminmaster(UserBean ubean) {
+	public void registrationAdminmaster(UserBean ubean) {
+		try {
+
+			// connection確立
+			super.connection();
+
+			// ユーザーを登録するSQL
+			String sql = "insert into user() values(?,?,?,?,?,?,?,?,?,?)";
+
+			stmt = con.prepareStatement(sql);
+
+			// SQLの？に値のセット
+			stmt.setString(1, ubean.getUserId());
+			stmt.setString(2, ubean.getNickname());
+			stmt.setString(3, ubean.getGender());
+			stmt.setInt(4, ubean.getBirthYear());
+			stmt.setInt(5, ubean.getBirthMonth());
+			stmt.setInt(6, ubean.getBirthDay());
+			stmt.setString(7, ubean.getPrefectures());
+			stmt.setString(8, ubean.getQuestionId());
+			stmt.setString(9, ubean.getAnswer());
+			stmt.setString(10, ubean.getAuthority());
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-
-				// connection確立
-				super.connection();
-
-				// ユーザーを登録するSQL
-				String sql = "insert into user() values(?,?,?,?,?,?,?,?,?,?)";
-
-				stmt = con.prepareStatement(sql);
-
-				// SQLの？に値のセット
-				stmt.setString(1, ubean.getUserId());
-				stmt.setString(2, ubean.getNickname());
-				stmt.setString(3, ubean.getGender());
-				stmt.setInt(4, ubean.getBirthYear());
-				stmt.setInt(5, ubean.getBirthMonth());
-				stmt.setInt(6, ubean.getBirthDay());
-				stmt.setString(7, ubean.getPrefectures());
-				stmt.setString(8, ubean.getQuestionId());
-				stmt.setString(9, ubean.getAnswer());
-				stmt.setString(10, ubean.getAuthority());
-				stmt.executeUpdate();
-
+				// エラー時はclose処理
+				super.DbClose();
 			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					// エラー時はclose処理
-					super.DbClose();
-				} catch (Exception e) {
-					System.out.println("error");
-				}
+				System.out.println("error");
 			}
 		}
+	}
 
 	// 会員登録時のユーザID重複チェック
 	public boolean userIDcheck(String userid) {

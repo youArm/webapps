@@ -8,23 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ContentsDao;
-import model.ContentsBean;
-import model.UserBean;
+import model.ContentsDetailsBean;
 
 /**
- * Servlet implementation class F_Contents_History
+ * Servlet implementation class F_ContentsInfomationChange
  */
-@WebServlet("/F_Contents_History")
-public class F_Contents_History extends HttpServlet {
+@WebServlet("/F_ContentsInfomationChange")
+public class F_ContentsInfomationChange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public F_Contents_History() {
+    public F_ContentsInfomationChange() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +33,17 @@ public class F_Contents_History extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		UserBean userbean = new UserBean();
+		String conid = request.getParameter("conId");
 		
-		userbean = (UserBean)session.getAttribute("userBean");
-		
-		ArrayList<ContentsBean> contentsArray = new ArrayList<ContentsBean>();
+		ArrayList<ContentsDetailsBean> contentsArray = new ArrayList<ContentsDetailsBean>();
 		ContentsDao contentsDao = new ContentsDao();
 		
-		contentsArray = contentsDao.contentsHistory(userbean.getUserId());
+		contentsArray = contentsDao.getContentsDetails(conid);
 		
-		request.setAttribute("contentsHistory", contentsArray);
+		request.setAttribute("contentsArray", contentsArray);
 		
-		request.getRequestDispatcher("WEB-INF/Contents_History.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/Contents_Infomation_Change.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -55,7 +51,8 @@ public class F_Contents_History extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

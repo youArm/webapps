@@ -25,7 +25,7 @@
 				<table border="1">
 					<% for(int count=0;count<contentsList.size();count++){%>
 							<tr>
-								<th><a href="ContentsDetail?conId=<%=contentsList.get(count).getConId()%>"><%= contentsList.get(count).getConName()%></a></th>
+								<th><a href="ContentsDetail?conId=<%=contentsList.get(count).getConId()%>" ><%= contentsList.get(count).getConName()%></a></th>
 							</tr>
 					<%} %>
 				</table>
@@ -33,5 +33,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="Footer.jsp" %>
+	
 </body>
 </html>

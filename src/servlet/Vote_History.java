@@ -9,11 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Vote_HistoryDao;
+import model.UserBean;
 import model.Vote_History_Bean;
 import model.Vote_Info_Bean;
-import model.Vote_result_bean;
 
 /**
  * Servlet implementation class Vote_History
@@ -35,13 +36,17 @@ public class Vote_History extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String user_id="test";
+		
+		HttpSession session = request.getSession();
+		UserBean userbean = new UserBean();
+		
+		userbean = (UserBean)session.getAttribute("userBean");
 		Vote_HistoryDao VH = new Vote_HistoryDao();
 		Vote_Info_Bean VIB = new Vote_Info_Bean();
 		
 		ArrayList<Vote_History_Bean> list=new ArrayList<Vote_History_Bean>();
 		
-		VIB=VH.History(user_id);
+		VIB=VH.History(userbean.getUserId());
 		
 		list=VIB.getvoteArray();
 		request.setAttribute("vort", list);

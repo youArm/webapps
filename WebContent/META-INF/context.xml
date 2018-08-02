@@ -5,7 +5,7 @@
 			name="jdbc/Myds"
 			type="javax.sql.DataSource"
 			url="jdbc:mysql://localhost/vote_system"
-			username="pma"
-			password="Centosadmin1!"
+			username="root"
+			password="root"
 	/>
 </Context>

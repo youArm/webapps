@@ -30,6 +30,26 @@ public class VoteDao extends DaoBase{
 		}
 	}
 	
+	//総投票数の増加
+	public void totalVoteadd(String con_id){
+		try{
+			super.connection();
+			String sql = "UPDATE `CONTENTS` SET `total_vote`=total_vote + 1 where con_id=?";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, con_id);
+			stmt.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				super.DbClose();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public  ArrayList<Vote_result_bean> result(String con_id){
 		ArrayList<Vote_result_bean> list=new ArrayList<Vote_result_bean>();
 	    String con_d_id;
@@ -78,7 +98,6 @@ public class VoteDao extends DaoBase{
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, con_id);
 
-        	System.out.println(con_id);
 	        rs = stmt.executeQuery();
 	        while(rs.next()){
 	        	con_d_id=rs.getString(1);

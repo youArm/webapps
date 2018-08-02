@@ -31,31 +31,71 @@
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/js/script.js"></script>
+
 </head>
 <body>
+	
+<div style="margin-top: 90px;"></div>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">ログイン</h1>
+        <div class="row center">
+        </div>
+        <div class="row">
+     </div>
+    	</div>
+    		<div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>
+  		</div>
+  		
 	<div class="container">
-		<div class="card card-container">
+		<div class="container"style="width:50%">
 			<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
 			<p id="profile-name" class="profile-name-card"></p>
 			<%if(login != null){ %>
+      
 					<h5 style="color:red"><%= login %><%} %></h5>
+					
 			<form class="form-signin" action = "UserLogin" method = "Post">
+			
 				<span id="reauth-email" class="reauth-email"></span>
-				<input id="inputEmail" class="form-control" placeholder="UserID" required autofocus name = "id">
+				
+				<input type="text" id="inputEmail" class="form-control" placeholder="UserID" required autofocus name = "id">
+				
 				<input type="password" id="inputPassword" class="form-control" name = "pass" placeholder="Password" required>
+				<p></p>
 				<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value = "Sign in">
 			</form>
 			<!-- /form -->
+			
 			<br>
-			<a href="F_Registration" class="new-member">
-			 New member registration </a>
+			<p></p>
+			<a href="F_Registration" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>新規会員登録 </a>
 			 
-			<a href="F_PassForget" class="new-member">
-			 パスワードを忘れた場合</a>
+			 <br>
+			<br>
+			<a href="F_PassForget" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>パスワードを忘れた場合</a>
 		</div>
 		<!-- /card-container -->
 	</div>
-	<!-- /container -->
+	<!-- /container -->            
+  		
+  		
+    
+    
+
+  <div class="parallax-container valign-wrapper" style="top: 20%">
+    <div class="section no-pad-bot">
+      <div class="container">
+      </div>
+    </div>
+    <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+	
+	<%@ include file="WEB-INF/Footer.jsp" %>
+	
 </body>
 </html>

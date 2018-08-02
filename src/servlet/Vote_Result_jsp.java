@@ -35,6 +35,9 @@ public class Vote_Result_jsp extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String con_id=request.getParameter("con_id");
+		
+		System.out.println(con_id);
+		
 		Vote_result_Info_Bean VriB=new Vote_result_Info_Bean();
 		RequestDispatcher dispatcher = null;
 		ArrayList<Vote_result_bean> list=new ArrayList<Vote_result_bean>();

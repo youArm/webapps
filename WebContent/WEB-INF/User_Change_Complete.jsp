@@ -8,27 +8,32 @@
 </head>
 <body>
 	
-	<div class="container">
+	<%@ include file="Header.jsp" %>
+	
+	<div class="container center">
 		<div class="row">
 			<div class="col-md-12">
 			
-				<p>情報変更が完了しました。</p>
+				<h1>情報変更が完了しました。</h1>
 				
 				
 			</div>
 		</div>
+	</div>
 		
+	<div class="container center">
 		<div class="row">
 			<div class="col-md-6">
-				<p><a href="F_Top">トップ</a></p>
+				<p><a href="F_Top" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>>トップ</a></p>
 			</div>
 			
 			<div class="col-md-6">
-				<p><a href="F_Mypage">マイページ</a></p>
+				<p><a href="F_Mypage" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>>マイページ</a></p>
 			</div>
 		</div>
 	</div>
 	
+	<%@ include file="Footer.jsp" %>
 	
 </body>
 </html>

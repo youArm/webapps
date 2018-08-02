@@ -55,6 +55,8 @@ public class Voteadd extends HttpServlet {
 		if(flg==true){
 		Vote.VoteAdd(con_id, con_d_id);
 		
+		Vote.totalVoteadd(con_id);
+		
 		VMD.vortcheck(userbean.getUserId(), con_id);
 		
 		Vote_HistoryDao VHD = new Vote_HistoryDao();

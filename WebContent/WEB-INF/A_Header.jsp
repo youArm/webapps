@@ -45,17 +45,14 @@ $(document).scroll(function(){
     </div>
    	<nav>
     	<div class="nav-wrapper" style="left: 0px; top: 0px">
-      		<a href="F_Top" class="brand-logo"><i class="large material-icons">assessment</i>投票システム</a>
+      		<a href="F_A_Top" class="brand-logo"><i class="large material-icons">assessment</i>投票システム</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-        		<li><a href="F_Mypage" style="font-color:blue">マイページ</a></li>
-        		<li><a href="Vote_History">投票履歴</a></li>
         		<li><a href="UserLogin">ログアウト</a></li>
       		</ul>
     	</div>
 	</nav> 
 </header>
 
-
-
 </body>
 </html>
+

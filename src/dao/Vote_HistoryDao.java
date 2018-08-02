@@ -1,9 +1,9 @@
 package dao;
 
+import java.sql.ResultSet;
+
 import model.Vote_History_Bean;
 import model.Vote_Info_Bean;
-import model.Vote_result_Info_Bean;
-import model.Vote_result_bean;
 
 public class Vote_HistoryDao extends DaoBase{
 
@@ -33,6 +33,10 @@ public class Vote_HistoryDao extends DaoBase{
 		Vote_Info_Bean list=new Vote_Info_Bean();
 		String con_d;
 	    String con_d_id;
+	    String con_d_id_name;
+	    String con_d_name;
+	    ResultSet rs1=null;	
+	    ResultSet rs2=null;	
 		
 		try{
 			super.connection();
@@ -43,10 +47,29 @@ public class Vote_HistoryDao extends DaoBase{
 	        while(rs.next()){
 	        	con_d=rs.getString(2);
 	        	con_d_id=rs.getString(3);
-	        	list.addList(new Vote_History_Bean(con_d,con_d_id));
+	        	sql = "SELECT * from `contents_details` where con_id=? and con_d_id=?;";
+	        	stmt = con.prepareStatement(sql);
+				stmt.setString(1, con_d);
+				stmt.setString(2, con_d_id);
+		        rs1 = stmt.executeQuery();
+		        
+		        rs1.next();
+		        
+	        	con_d_id_name=rs1.getString(3);
+	        	
+		        sql = "SELECT * from `contents` where con_id=?;";
+	        	stmt = con.prepareStatement(sql);
+				stmt.setString(1, con_d);
+		        rs2 = stmt.executeQuery();
+		        
+		        rs2.next();
+		        
+		        con_d_name=rs2.getString(4);
+		        
+	        	list.addList(new Vote_History_Bean(con_d_name,con_d_id_name,con_d));
 	        }
 		}catch(Exception e){
-			e.printStackTrace();
+			System.out.println(e);
 		}finally{
 			try{
 				super.DbClose();
@@ -55,8 +78,6 @@ public class Vote_HistoryDao extends DaoBase{
 			}
 		}
 		return list;
-		
-		
 	}
 
 }

@@ -23,6 +23,15 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     	<title>管理者登録</title>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/init.js"></script>
+		
+		<!-- CSS  -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	</head>
 
 	<body>
@@ -140,6 +149,9 @@
 				</div>
 			</div>
 		</div>
+		
+		<%@ include file="Footer.jsp" %>
+		
 		<script type="text/javascript" src='<c:url value="/js/Registration.js"/>'></script>
 	</body>
 </html>

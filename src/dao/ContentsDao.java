@@ -98,7 +98,7 @@ public class ContentsDao extends DaoBase{
 		try{
 			super.connection();
 			
-			String sql = "SELECT * FROM contents ORDER BY total_vote limit 3";
+			String sql = "SELECT * FROM contents ORDER BY total_vote DESC limit 3";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
@@ -209,6 +209,7 @@ public class ContentsDao extends DaoBase{
 		return contentsList;
 	}	
 	
+	//コンテンツ削除
 	public void contentsDelete(String conid){
 		try{
 			super.connection();
@@ -229,6 +230,7 @@ public class ContentsDao extends DaoBase{
 		}
 	}
 	
+	//ユーザのコンテンツ作成履歴
 	public ArrayList<ContentsBean> contentsHistory(String userid){
 		
 		ArrayList<ContentsBean> contentsList = new ArrayList<ContentsBean>();
@@ -266,5 +268,69 @@ public class ContentsDao extends DaoBase{
 			}
 		}
 		return contentsList;
+	}
+	
+	//コンテンツIDに付与する番号の取得
+	public int countContents() {
+		try {
+
+			// connection確立
+			super.connection();
+
+			// ユーザーを登録するSQL
+			String sql = "select count(*) from contents";
+
+			stmt = con.prepareStatement(sql);
+
+			rs = stmt.executeQuery();
+
+
+			rs.next();
+			rsno = rs.getInt(1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+		return rsno;
+	}
+	//コンテンツ登録
+	public void registrationContents(String user, String catename,String conname,String date, String contentsId, String createDate) {
+		try {
+
+			// connection確立
+			super.connection();
+
+			// ユーザーを登録するSQL
+			String sql = "insert into contents(con_id,user_id,cate_id,con_name,create_date,end_date) values(?,?,?,?,?,?)";
+
+			stmt = con.prepareStatement(sql);
+
+			// SQLの？に値のセット
+			stmt.setString(1, contentsId);
+			stmt.setString(2, user);
+			stmt.setString(3, catename);
+			stmt.setString(4, conname);
+			stmt.setString(5, createDate);
+			stmt.setString(6, date);
+
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
 	}
 }

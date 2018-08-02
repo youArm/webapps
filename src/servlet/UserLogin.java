@@ -58,7 +58,8 @@ public class UserLogin extends HttpServlet {
 				String pass = hash.encryptPass(password);
 				
 				flg = PasswordDao.LoginUser(userid, pass);
-				if(flg == true){//ログイン成功時
+				//ログイン成功時
+				if(flg == true){
 					
 					UserBean user = new UserBean();
 					UserDao udao = new UserDao();

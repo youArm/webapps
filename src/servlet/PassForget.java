@@ -58,11 +58,11 @@ public class PassForget extends HttpServlet {
 			}
 			else{
 				path="WEB-INF/Pass_Forget.jsp";
-				request.setAttribute("msg", "質問か答えが一致しません");
+				request.setAttribute("msg", "ユーザIDか質問と答えが一致しません");
 			}
 		}else{
 			path="WEB-INF/Pass_Forget.jsp";
-			request.setAttribute("msg", "質問か答えが一致しません");
+			request.setAttribute("msg", "ユーザIDか質問と答えが一致しません");
 		}
 		
 		request.getRequestDispatcher(path).forward(request, response);

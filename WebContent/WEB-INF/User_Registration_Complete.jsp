@@ -9,23 +9,40 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="css/Registration_Complete.css">
+  <script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
 
-	<div class="container">
+	<%@ include file="Header.jsp" %>
+
+	<div class="container center">
 		<div class="row">
-			<div class="col-md-8">
-				<p>会員登録が完了しました</p>
+			<div class="col-md-12">
+				<h5>会員登録が完了しました</h5>
 			</div>
-
-			<div class="col-md-2">
-				<a href="F_Top"/>トップ</a>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<a class="btn btn-success" href="F_Top" role="button"/>トップ</a>
 			</div>
-
-			<div class="col-md-2">
-				<a href="F_Mypage"/>マイページ</a>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<a class="btn btn-success" href="F_Mypage" role="button"/>マイページ</a>
 			</div>
 		</div>
 	</div>
+	
+	<%@ include file="Footer.jsp" %>
+	
 </body>
 </html>
