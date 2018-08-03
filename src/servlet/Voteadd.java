@@ -74,7 +74,6 @@ public class Voteadd extends HttpServlet {
 		dispatcher = request.getRequestDispatcher("Vote_Result");
 		dispatcher.forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

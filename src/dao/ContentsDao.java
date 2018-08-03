@@ -333,4 +333,36 @@ public class ContentsDao extends DaoBase{
 			}
 		}
 	}
+	
+	//コンテンツ変更
+	public void updaContents(String conid,String conname,String date, String cate_id) {
+		try {
+
+			// connection確立
+			super.connection();
+
+			// ユーザーを登録するSQL
+			String sql = "UPDATE contents SET cate_id = ?,con_name = ?,end_date = ? WHERE con_id = ?";
+
+			stmt = con.prepareStatement(sql);
+
+			// SQLの？に値のセット
+			stmt.setString(1, cate_id);
+			stmt.setString(2, conname);
+			stmt.setString(3, date);
+			stmt.setString(4, conid);
+
+			stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// エラー時はclose処理
+				super.DbClose();
+			} catch (Exception e) {
+				System.out.println("error");
+			}
+		}
+	}
 }

@@ -8,6 +8,7 @@
 
 <% 	ArrayList<ContentsDetailsBean> contentsArray = new ArrayList<ContentsDetailsBean>();
 	contentsArray = (ArrayList<ContentsDetailsBean>)request.getAttribute("contentsArray");
+	String conid = (String)request.getAttribute("conid");
 %>
 
 <% SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -43,25 +44,27 @@
 				}%>
 					
 					<p>カテゴリ</p>
-					<select name="catename" required>
-					<option value="1" selected>エンターテインメントと趣味</option>
-					<option value="4">ニュース</option>
-					<option value="7">デバイス・PC・家電</option>
-					<option value="10">学問・サイエンス</option>
-					<option value="2">暮らしと生活ガイド</option>
-					<option value="5">恋愛・人間関係</option>
-					<option value="8">ビジネス・経済とお金</option>
-					<option value="11">職業とキャリア</option>
-					<option value="3">健康・美容・ファッション</option>
-					<option value="6">子育て・学校</option>
-					<option value="9">スポーツ、アウトドア、車</option>
-					<option value="12">その他</option>
-					<option value="13">地域、旅行、お出かけ</option>
-					</select>
+					<div class="input-field white">
+						<select name="catename" required>
+							<option value="1" selected>エンターテインメントと趣味</option>
+							<option value="4">ニュース</option>
+							<option value="7">デバイス・PC・家電</option>
+							<option value="10">学問・サイエンス</option>
+							<option value="2">暮らしと生活ガイド</option>
+							<option value="5">恋愛・人間関係</option>
+							<option value="8">ビジネス・経済とお金</option>
+							<option value="11">職業とキャリア</option>
+							<option value="3">健康・美容・ファッション</option>
+							<option value="6">子育て・学校</option>
+							<option value="9">スポーツ、アウトドア、車</option>
+							<option value="12">その他</option>
+						</select>
 					<br>
 					<br>
+					</div>
 					<p>投票期日</p>
 					<input type="date" name="date" min="<%= d %>">
+					<input type="hidden" name="conid" value="<%=conid %>">
 					
 					<br><br>
 					<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value = "更新">
@@ -72,6 +75,37 @@
 	</div>
 	
 	<%@ include file="Footer.jsp" %>
+	
+	<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+  function check(){
+
+		if(window.confirm('変更してもよろしいですか？')){ // 確認ダイアログを表示
+
+			return true; // 「OK」時は送信を実行
+
+		}
+		else{ // 「キャンセル」時の処理
+
+			window.alert('キャンセルされました'); // 警告ダイアログを表示
+			return false; // 送信を中止
+
+		}
+
+	}
+  
+  
+    </script>
 	
 </body>
 </html>

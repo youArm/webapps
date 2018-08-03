@@ -23,7 +23,7 @@
 				<form action="Voteadd">
 					<div class="col-md-3">
 						<h5><%=arrayContentsDetails.get(count).getCon_d_name()%></h5>
-						<img src="./<%=arrayContentsDetails.get(count).getImage() %>" width="100" height="100">
+						<img src="./<%=arrayContentsDetails.get(count).getImage() %>" style="width:200px">
 						<h5><%=arrayContentsDetails.get(count).getDescription() %></h5>
 						
 						<input type="hidden" value="<%=arrayContentsDetails.get(count).getCon_id() %>" name="con_id">

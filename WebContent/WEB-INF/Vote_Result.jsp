@@ -32,7 +32,7 @@
                 			<tr>
                     			<td><%=bean.getCon_d_name()%></td>
                     			<td><%=bean.getVotes()%></td>
-                    			<td><img src="./<%= bean.getImage()%>" width="100" height="100"></td>
+                    			<td style="height:250px"><img src="./<%= bean.getImage()%>" style="width:200px"></td>
                 			</tr>
                 			<% }%>
             			</tbody>

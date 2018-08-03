@@ -74,7 +74,7 @@
 			<br>
 			<p></p>
 			<a href="F_Registration" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>新規会員登録 </a>
-			 
+			 <p></p>
 			 <br>
 			<br>
 			<a href="F_PassForget" class="waves-effect waves-light btn-large" style="width:100%"><i class="material-icons left">dehaze</i>パスワードを忘れた場合</a>

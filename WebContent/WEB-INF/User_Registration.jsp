@@ -73,7 +73,7 @@
 						<p>生年月日</p>
 						<div class="input-field col s12">
 							<select name="birthyear" required>
-								<% for(int year=1900;year<=isysYear;year++){ %>
+								<% for(int year=1960;year<=isysYear;year++){ %>
 								<option value=<%=year%>><%=year%></option>
 								<%} %>
 							</select>年

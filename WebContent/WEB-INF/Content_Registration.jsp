@@ -12,6 +12,14 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>コンテンツ登録</title>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 <head />
 <body>
 	
@@ -29,38 +37,68 @@
 
 					<h5>回答１</h5>
 					<input type="text" name="ans1" required> 
-					<input type="file" name="ansImage1">
+					<div class="file-field input-field">
+      					<div class="btn">
+        					<span>File</span>
+        					<input type="file" name="ansImage1">
+      					</div>
+      					<div class="file-path-wrapper">
+        					<input class="file-path validate" type="text">
+      					</div>
+      				</div>
 
 					<h5>回答２</h5>
 					<input type="text" name="ans2" required>
-					<input type="file" name="ansImage2">
+					<div class="file-field input-field">
+      					<div class="btn">
+        					<span>File</span>
+        					<input type="file" name="ansImage2">
+      					</div>
+      					<div class="file-path-wrapper">
+        					<input class="file-path validate" type="text">
+      					</div>
+      				</div>
 
 					<h5>回答３</h5>
-					<input type="text" name="ans3"> <input type="file"
-						name="ansImage3">
+					<input type="text" name="ans3">
+					<div class="file-field input-field">
+      					<div class="btn">
+        					<span>File</span>
+        					<input type="file" name="ansImage3">
+      					</div>
+      					<div class="file-path-wrapper">
+        					<input class="file-path validate" type="text">
+      					</div>
+      				</div>
 
 					<h5>回答４</h5>
-					<input type="text" name="ans4"> <input type="file"
-						name="ansImage4">
-
+					<input type="text" name="ans4">
+					<div class="file-field input-field">
+      					<div class="btn">
+        					<span>File</span>
+        					<input type="file" name="ansImage4">
+      					</div>
+      					<div class="file-path-wrapper">
+        					<input class="file-path validate" type="text">
+      					</div>
+      				</div>
+      				
 					<h5>カテゴリ</h5>
-					<div class="row">
-        				<div class="input-field white">
-							<select name="catename" required>
-								<option value="1" selected>エンターテインメントと趣味</option>
-								<option value="4">ニュース</option>
-								<option value="7">デバイス・PC・家電</option>
-								<option value="10">学問・サイエンス</option>
-								<option value="2">暮らしと生活ガイド</option>
-								<option value="5">恋愛・人間関係</option>
-								<option value="8">ビジネス・経済とお金</option>
-								<option value="11">職業とキャリア</option>
-								<option value="3">健康・美容・ファッション</option>
-								<option value="6">子育て・学校</option>
-								<option value="9">スポーツ、アウトドア、車</option>
-								<option value="12">その他</option>
-							</select> <br> <br>
-						</div><
+        			<div class="input-field white">
+						<select name="catename" required>
+							<option value="1" selected>エンターテインメントと趣味</option>
+							<option value="4">ニュース</option>
+							<option value="7">デバイス・PC・家電</option>
+							<option value="10">学問・サイエンス</option>
+							<option value="2">暮らしと生活ガイド</option>
+							<option value="5">恋愛・人間関係</option>
+							<option value="8">ビジネス・経済とお金</option>
+							<option value="11">職業とキャリア</option>
+							<option value="3">健康・美容・ファッション</option>
+							<option value="6">子育て・学校</option>
+							<option value="9">スポーツ、アウトドア、車</option>
+							<option value="12">その他</option>
+						</select> <br> <br>
 					</div>
 					<h5>投票期日</h5>
 					<input type="date" name="date" min="<%=d%>" required> <br>
@@ -74,7 +112,7 @@
 	<%@ include file="Footer.jsp" %>
 	
 		
-	 <script>
+<script>
     
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
@@ -86,10 +124,9 @@
   $(document).ready(function(){
     $('select').formSelect();
   });
-  
   function check(){
 
-		if(window.confirm('送信してよろしいですか？')){ // 確認ダイアログを表示
+		if(window.confirm('作成してもよろしいですか？')){ // 確認ダイアログを表示
 
 			return true; // 「OK」時は送信を実行
 
@@ -105,7 +142,5 @@
   
   
     </script>
-	
-	
 </body>
 </html>

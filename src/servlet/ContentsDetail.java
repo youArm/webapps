@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.ContentsDao;
+import dao.VOTE_MANAGEMENT_Dao;
 import model.ContentsDetailsBean;
+import model.UserBean;
 
 /**
  * Servlet implementation class F_ContentsDetail
@@ -34,15 +37,36 @@ public class ContentsDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String conId = request.getParameter("conId");
+		String path = "";
+		boolean flg = false;
 		
-		ContentsDao contentsDao = new ContentsDao();
+		HttpSession session = request.getSession();
+		UserBean userbean = new UserBean();
+		userbean = (UserBean)session.getAttribute("userBean");
 		
-		ArrayList<ContentsDetailsBean> ArrayContentsDetails = new ArrayList<ContentsDetailsBean>();
-		ArrayContentsDetails = contentsDao.getContentsDetails(conId);
+		VOTE_MANAGEMENT_Dao VoteManagemetDao = new VOTE_MANAGEMENT_Dao();
+		flg = VoteManagemetDao.votecheck(userbean.getUserId(), conId);
 		
-		request.setAttribute("contentsDetails", ArrayContentsDetails);
+		if(flg == true){
+			
+			ContentsDao contentsDao = new ContentsDao();
+			
+			ArrayList<ContentsDetailsBean> ArrayContentsDetails = new ArrayList<ContentsDetailsBean>();
+			ArrayContentsDetails = contentsDao.getContentsDetails(conId);
+			
+			request.setAttribute("contentsDetails", ArrayContentsDetails);
+			
+			path = "WEB-INF/Contents_Details.jsp";
+		}else{
+			
+			request.setAttribute("con_id", conId);
+			
+			path = "Vote_Result";
+			
+			
+		}
 		
-		request.getRequestDispatcher("WEB-INF/Contents_Details.jsp").forward(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
 		
 	}
 

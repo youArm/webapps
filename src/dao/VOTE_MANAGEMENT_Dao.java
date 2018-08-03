@@ -13,7 +13,7 @@ public class VOTE_MANAGEMENT_Dao extends DaoBase{
 			// connection確立
 			super.connection();
 
-			String selectSQL = "select count(*) from vote_management where user_id = ? && con_id= ?";
+			String selectSQL = "select count(*) from vote_management where user_id = ? and con_id= ?";
 
 			stmt = con.prepareStatement(selectSQL);
 			// SQLの？に値のセット
