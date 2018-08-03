@@ -8,12 +8,13 @@
 </head>
 <body>
 	
-	<div class="container">
+	<%@ include file="A_Header.jsp" %>
+	<div class="container center">
 		<div class="row">
 			<div class="col-md-12">
 	
 				<h2>ユーザを削除しました</h2>
-				<a href="F_A_Top">ログイン</a>
+				<a href="F_A_Top" class="btn btn-lg btn-primary btn-block btn-signin">トップ</a>
 			</div>
 		</div>
 	</div>

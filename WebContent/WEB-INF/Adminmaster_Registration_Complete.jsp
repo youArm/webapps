@@ -21,16 +21,19 @@
 </head>
 <body>
 
-	<div class="container">
+	<%@ include file="A_Header.jsp" %>
+
+	<div class="container center">
 		<div class="row">
-			<div class="col-md-9">
-				<p>管理者登録が完了しました</p>
+			<div class="col-md-12">
+				<h5>会員登録が完了しました</h5>
 			</div>
-
-			<div class="col-md-3">
-				<a href="F_A_Top"/>トップ</a>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<a class="btn btn-success" href="F_A_Top" role="button"/>トップ</a>
 			</div>
-
 
 		</div>
 	</div>

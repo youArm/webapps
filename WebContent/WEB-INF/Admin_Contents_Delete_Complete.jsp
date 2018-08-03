@@ -8,13 +8,15 @@
 </head>
 <body>
 	
-	<div class="container">
+	<%@ include file="A_Header.jsp" %>
+	
+	<div class="container center">
 		<div class="row">
 			<div class="col-md-12">
 				
 				<h3>指定したコンテンツを削除しました。</h3>
 				
-				<a href="F_A_Top">トップ</a>
+				<a href="F_A_Top" class="btn btn-lg btn-primary btn-block btn-signin">トップ</a>
 				
 			</div>
 		</div>

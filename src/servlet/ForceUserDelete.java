@@ -43,7 +43,7 @@ public class ForceUserDelete extends HttpServlet {
 		UserDao userdao = new UserDao();
 		userdao.deleteUser(userid);
 		
-		request.getRequestDispatcher("WEB-INF/Force_User_Delete_Complete.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/Force_User_Delete_complete.jsp").forward(request, response);
 		
 	
 	}

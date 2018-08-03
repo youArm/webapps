@@ -15,27 +15,52 @@
 </head>
 <body>
 	
-	<div class="container">
+	<%@ include file="A_Header.jsp" %>
+	
+	<div class="container center">
 		<div class="row">
 			<div class="col-md-12">
 				
-				<h1>コンテンツ削除</h1>
+				<h2>コンテンツ削除</h2>
+				
+				<% if(contentsArray.size() == 0){%>
+					<h5>登録されたコンテンツがありません。</h5>
+					<p></p>
+					<a href="F_A_Top" class="btn btn-lg btn-primary btn-block btn-signin">トップ</a>
+				<% }else{%>
 				
 				<form action="AdminContentsDelete" method="post">
-					<select name="conid">
-						<% for(int count=0;count<contentsArray.size();count++){ %>
-							<option value="<%=contentsArray.get(count).getConId() %>"><%=contentsArray.get(count).getConName() %></option>
-						<%} %>
-						
-						<input type="submit" value="削除">
-					</select>
+					<div class="input-field white">
+						<select name="conid">
+							<% for(int count=0;count<contentsArray.size();count++){ %>
+								<option value="<%=contentsArray.get(count).getConId() %>"><%=contentsArray.get(count).getConName() %></option>
+							<%} %>
+							
+							<input type="submit" value="削除" class="btn btn-lg btn-primary btn-block btn-signin">
+						</select>
+					</div>
 				</form>
+				<%}%>
 				
 			</div>
 		</div>
 	</div>
 	
 	<%@ include file="Footer.jsp" %>
+	
+	<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
 	
 </body>
 </html>
