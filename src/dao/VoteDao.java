@@ -94,7 +94,7 @@ public class VoteDao extends DaoBase{
 		
 		try{
 			super.connection();
-			String sql = "SELECT * from `CONTENTS_DETAILS` where con_id=?;";
+			String sql = "SELECT * from `contents_details` where con_id=?;";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, con_id);
 
